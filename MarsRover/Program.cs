@@ -17,29 +17,32 @@ namespace MarsRover
 
             int max_X = int.Parse(gridArr[0]);
             int max_Y = int.Parse(gridArr[1]);
-            Position p = new Position(max_X,max_Y);
-            
+
+            Position p1 = new Position(max_X,max_Y);            
             string[] pos1 = position1.Split(" ");
-            p.CurrentRotation = pos1[2];
-            p.X = int.Parse(pos1[0]);
-            p.Y = int.Parse(pos1[1]);
+            p1.CurrentRotation = pos1[2];
+            p1.X = int.Parse(pos1[0]);
+            p1.Y = int.Parse(pos1[1]);
+
+            string[] pos2 = position2.Split(" ");
+            Position p2 = new Position(max_X, max_Y);
+            p2.CurrentRotation = pos2[2];
+            p2.X = int.Parse(pos2[0]);
+            p2.Y = int.Parse(pos2[1]);
+
 
             Console.WriteLine();
             Console.WriteLine("Expected Output:");
 
             Rover r1 = new Rover();
-            r1.SetPosition(p);
+            r1.SetPosition(p1);
             r1.SetRotateList(rotateList1);
             r1.StartAction();
             Position result = r1.GetPosition();
             Console.WriteLine(result.X + " " + result.Y + " " + result.CurrentRotation);      
             Rover r2 = new Rover();
-          
-            string[] pos2 = position2.Split(" ");
-            p.CurrentRotation = pos2[2];
-            p.X =int.Parse(pos2[0]);
-            p.Y = int.Parse(pos2[1]);
-            r2.SetPosition(p);
+                    
+            r2.SetPosition(p2);
             r2.SetRotateList(rotateList2);
             r2.StartAction();
             Position result2 = r2.GetPosition();
